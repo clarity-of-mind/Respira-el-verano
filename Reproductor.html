@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Audio semanal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: sans-serif; text-align: center; padding-top: 50px; background:#f4f4f4; }
+  audio { width: 90%; max-width: 400px; }
+</style>
+</head>
+<body>
+  <h2>🎧 Audio de la semana</h2>
+  <audio controls autoplay id="player"></audio>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('audio');
+    if (file) {
+      document.getElementById('player').src = file;
+    } else {
+      document.body.innerHTML += '<p>No se especificó audio.</p>';
+    }
+  </script>
+</body>
+</html>
