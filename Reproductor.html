@@ -2,6 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SZNV6L5ZST"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SZNV6L5ZST');
+</script>
 <title>Audio semanal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -17,6 +25,8 @@
     const file = params.get('audio');
     if (file) {
       document.getElementById('player').src = file;
+      const nombre = file.replace('.mp3', '');
+      document.title = 'Audio - ' + nombre;
     } else {
       document.body.innerHTML += '<p>No se especificó audio.</p>';
     }
