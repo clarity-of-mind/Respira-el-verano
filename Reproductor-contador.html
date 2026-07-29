@@ -2,56 +2,36 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SZNV6L5ZST"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-SZNV6L5ZST');
 </script>
-
 <title>Audio semanal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
-  body {
-    font-family: sans-serif;
-    text-align: center;
-    padding-top: 50px;
-    background: #f4f4f4;
-  }
-
-  audio {
-    width: 90%;
-    max-width: 400px;
-  }
+  body { font-family: sans-serif; text-align: center; padding-top: 50px; background:#f4f4f4; }
+  audio { width: 90%; max-width: 400px; }
+  img { display: block; margin-left: auto; margin-right: auto; }
 </style>
 </head>
-
 <body>
-
-<h2>🎧 Audio de la semana</h2>
-
-<audio controls autoplay id="player"></audio>
-
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const archivo = params.get('audio');
-
-  if (archivo) {
-    document.getElementById('player').src = archivo;
-
-    gtag('event', 'audio_abierto', {
-      audio: archivo
-    });
-
-  } else {
-    document.body.innerHTML += "<p>No se especificó audio.</p>";
-  }
-</script>
-
+  <img src="logo.jpg" alt="Logo" style="max-width: 200px; margin-bottom: 20px;">
+  <h2>🎧 Audio de la semana</h2>
+  <audio controls autoplay id="player"></audio>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('audio');
+    if (file) {
+      document.getElementById('player').src = file;
+      const nombre = file.replace('.mp3', '');
+      document.title = 'Audio - ' + nombre;
+    } else {
+      document.body.innerHTML += '<p>No se especificó audio.</p>';
+    }
+  </script>
 </body>
 </html>
